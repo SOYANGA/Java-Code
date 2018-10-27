@@ -1,10 +1,8 @@
-import java.lang.reflect.Proxy;
-
 interface ISubject {
     void buyComputer();
 }
 
-class ReallSubject implements ISubject {
+class RealSubject implements ISubject {
     public void buyComputer() {
         System.out.println("2.买一台外星人电脑");
     }
@@ -32,9 +30,18 @@ class ProxySubject implements ISubject {
     }
 }
 
+class Factory {
+    public static ISubject getInstance() {
+        return new ProxySubject(new RealSubject());
+    }
+}
+
 public class Subject {
     public static void main(String[] args) {
-        ISubject subject = new ProxySubject(new ReallSubject());
+        // ISubject subject = new ProxySubject(new ReallSubject());
+        // subject.buyComputer();
+        ISubject subject = Factory.getInstance();
         subject.buyComputer();
+
     }
 }
