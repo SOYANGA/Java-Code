@@ -33,6 +33,22 @@ class Person {
     }
 }
 
+interface IMessage {
+    public void getMessage();
+
+}
+
+class MessageImpl implements IMessage {
+    @Override
+    public String toString() {
+        return "\nI am small bitter";
+    }
+
+    public void getMessage() {
+        System.out.println("比特欢迎您");
+    }
+}
+
 class Student {
 }
 
@@ -45,15 +61,31 @@ public class TestObjectClass {
         Student student = new Student();
         fun(student);
         //2.2.
-        System.out.println("3.______________________");
+        System.out.println("2.2.______________________");
         String msg = "Hello" + new Person("SOYANGA", 20);
         System.out.println(msg);
         //3.
-        System.out.println("4.______________________");
+        System.out.println("3.______________________");
         Person per1 = new Person("SOYANGA", 20);
         Person per2 = new Person("SOYANGA", 20);
         System.out.println(per1.equals(per2));
+        //4.1 Object 接收数组
+        System.out.println("4._________________________");
+        //接收数组向上转型
+        Object obj = new int[]{1, 2, 3, 4, 5, 6};
+        //向下转型，需要强制转换
+        int[] data = (int[]) obj;
+        for (int i : data) {
+            System.out.print(i + ",");
+        }
+        //4.2接受接口对象（接口的子类）
+        IMessage msg4 = new MessageImpl();//子类向父接口向上转型
+        Object object4 = msg4; //接口转向Object
+        System.out.println(object4);
+        IMessage temp = (IMessage) object4;//向下强转
+        temp.getMessage();
     }
+
 
     public static void fun(Object obj) {
         System.out.println(obj.toString());
@@ -81,7 +113,13 @@ public class TestObjectClass {
 //3
 //String类对象比较使用的是equals（）方法，实际上String类的equals（）方法就是覆写的
 //Object类在中的equals（）方法。
-//结论：字符串是爸爸
+//结论：字符串是爸爸。
+
+//4.接收引用数据类型
+//Object可以接受搜友数据类型，包括：类，数组，接口
+//Object 可以接受接口是java中强制要求的，因为接口本身不能继承任何类
+
+
 
 
 
