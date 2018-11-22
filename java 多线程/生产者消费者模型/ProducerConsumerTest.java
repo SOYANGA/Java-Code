@@ -40,7 +40,7 @@ class Goods1 {
         //每次消费一个商品
         this.count--;
         Thread.sleep(1000);
-        System.out.println("消费" +this);
+        System.out.println("消费" + this);
         //消费完告知生产者线程可以继续生产了
         notifyAll();
     }
@@ -60,11 +60,13 @@ class Producer1 implements Runnable {
 
     @Override
     public void run() {
-        try {
-            this.goods.setGoods("哇哈哈");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        while (true) {
+            try {
+                this.goods.setGoods("哇哈哈");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
 
+            }
         }
     }
 }
@@ -78,12 +80,16 @@ class Consumer1 implements Runnable {
 
     @Override
     public void run() {
-        try {
-            this.goods.getGoods();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        while (true) {
+            try {
+                this.goods.getGoods();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+
     }
+
 }
 
 

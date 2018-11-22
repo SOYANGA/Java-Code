@@ -1,4 +1,4 @@
-import oracle.jrockit.jfr.openmbean.ProducerDescriptorType;
+package ProducerConsumerModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -127,8 +127,8 @@ public class TestGoods {
             produceThread.setName("生产者线程" + i);
             threadList.add(produceThread);
         }
-        //6个消费者线程
-        for (int i = 0; i < 6; i++) {
+        //5个消费者线程
+        for (int i = 0; i < 5; i++) {
             Thread consumeThread = new Thread(new Coustom(goods));
             consumeThread.setName("消费者线程" + i);
             threadList.add(consumeThread);
