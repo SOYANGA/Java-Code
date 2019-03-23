@@ -8,7 +8,6 @@ class Macpro implements Computer {
     public void printComputer() {
         System.out.println("This is a Macpro with bar");
     }
-
 }
 
 class Surface implements Computer {
